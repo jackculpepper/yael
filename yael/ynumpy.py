@@ -78,7 +78,7 @@ def kmeans(v, k,
     elif distance_type == 3: flags |= yael.KMEANS_CHI2
 
     if init == 'random':     flags |= yael.KMEANS_INIT_RANDOM
-    elif init == 'kmeans++': pass # default
+    elif init == 'kmeans++': flags |= yael.KMEANS_INIT_BERKELEY
 
     qerr = yael.kmeans(d, n, k, niter, 
                        yael.numpy_to_fvec_ref(v), flags, seed, redo, 
