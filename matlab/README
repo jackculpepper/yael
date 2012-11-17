@@ -1,0 +1,7 @@
+This package is a subset of the Yael package. It offers a pre-compiled Matlab 
+interface to some of the Yael functions. 
+
+For the full C and python interfaces, or to get the Mex-files corresponding 
+to the pre-compiled files, download the yael_vXXX.tar.gz file instead.
+
+
