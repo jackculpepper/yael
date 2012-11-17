@@ -46,6 +46,7 @@ knowledge of the CeCILL license and that you accept its terms.
 
 #define FMT_TXT     0
 #define FMT_BVECS   3
+#define FMT_FVECS   4
 
 void display_help (const char * progname)
 {
@@ -81,6 +82,11 @@ int main (int argc, char **argv)
       assert (fo);
       out_fmt = FMT_BVECS;
     }
+    else if (!strcmp (a, "-fvecs") && i + 1 < argc) {
+      fo = fopen (argv[++i], "w");
+      assert (fo);
+      out_fmt = FMT_FVECS;
+    }
     else {
       fprintf (stderr, "could not parse argument %s\n", a);
       display_help (argv[0]);
@@ -114,6 +120,12 @@ int main (int argc, char **argv)
       ret = fwrite (&d, sizeof (d), 1, fo);
       assert (ret == 1);
       ret = fwrite (vb, sizeof (*vb), d, fo);
+      assert (ret == d);
+    }
+    else if (out_fmt == FMT_FVECS) {
+      ret = fwrite (&d, sizeof (d), 1, fo);
+      assert (ret == 1);
+      ret = fwrite (v, sizeof (*v), d, fo);
       assert (ret == d);
     }
     i++;
