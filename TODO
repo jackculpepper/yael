@@ -1,10 +1,19 @@
 
 - pull in patches I made to v260
-  - "fix horrible bug"
   - add setup.py to root
+
+- patches pulled in
+  - "fix horrible bug" -- looks to be fixed in v300
   - "add ivecfile loading/saving functions"
-  - "check matrix arg to ivecs_write() correctly"
-  - "whoops X ..." are all related to the above; maybe diff ynumpy.py
-  - "Added option to create an fvec files with fvecfile command"
+    - ivecs_read() was included in v300, my ivecs_write() was completely wrong
+      so i removed it
   - "fix kmeans init bug, when called from python"
+    - fixed
+  - "Added option to create an fvec files with fvecfile command"
+    - fixed
+  - "check matrix arg to ivecs_write() correctly"
+    - irrelevant
+  - "whoops X ..." are all related to the above; maybe diff ynumpy.py
+    - these are all irrelevant now
+
 

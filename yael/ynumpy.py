@@ -117,24 +117,29 @@ def fvecs_read(filename, nmax = -1):
     a = yael.fvec_to_numpy(fvecs, n * d)
     return a.reshape((n, d))
 
-def ivecs_read(filename):
-    (fvecs, n, d) = yael.ivecs_new_read(filename)
-    if n == -1: 
-        raise IOError("could not read " + filename)
-    elif n == 0: d = 0    
-    ivecs = yael.ivec.acquirepointer(fvecs)
-    # TODO find a way to avoid copy
-    a = yael.ivec_to_numpy(fvecs, n * d)
-    return a.reshape((n, d))
-
-
-
 def fvecs_write(filename, matrix): 
     _check_row_float32(matrix)
     n, d = matrix.shape
     ret = yael.fvecs_write(filename, d, n, yael.numpy_to_fvec_ref(matrix))
     if ret != n:
         raise IOError("write error" + filename)
+
+def ivecs_fsize(filename):
+    (fsize, d, n) = yael.ivecs_fsize(filename)
+    if n < 0 and d < 0:
+        return IOError("ivecs_fsize: cannot read " + filename)
+    # WARN: if file is empty, (d, n) = (-1, 0)
+    return (d, n)
+
+def ivecs_read(filename):  
+    (fvecs, n, d) = yael.ivecs_new_read(filename)
+    if n == -1:
+        raise IOError("could not read " + filename)
+    elif n == 0: d = 0  
+    ivecs = yael.ivec.acquirepointer(fvecs)
+    # TODO find a way to avoid copy
+    a = yael.ivec_to_numpy(fvecs, n * d)
+    return a.reshape((n, d))
 
 def ivecs_write(filename, matrix): 
     pass
