@@ -6,7 +6,7 @@ _yael = Extension('_yael',
                   define_macros = [('FINTEGER', 'int'),
                                    ('HAVE_THREADS', '')],
                   include_dirs = ['/usr/include/python2.7', './yael', '.'],
-                  libraries = ['boost_python-mt-py26'],
+                  libraries = ['boost_python-mt-py26', 'blas', 'lapack'],
                   extra_compile_args = ['-fopenmp'],
                   extra_link_args = ['-fopenmp'],
                   sources = ['yael/binheap.c',
@@ -22,6 +22,7 @@ _yael = Extension('_yael',
                              'yael/spectral_clustering.c',
                              'yael/vector.c',
                              'yael/vlad.c',
+                             'yael/yael_wrap.c',
                             ])
 
 
