@@ -35,6 +35,6 @@ setup(name='yael',
     packages=['yael'],
     ext_modules = [_yael],
 #    package_data={'yael':['_yael.so']},
-    install_requires=["numexpr>=1.4.1", "tables"],
+#    install_requires=["numexpr>=1.4.1", "tables"],
 )
 
