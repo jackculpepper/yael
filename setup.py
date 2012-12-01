@@ -22,7 +22,7 @@ _yael = Extension('_yael',
                              'yael/spectral_clustering.c',
                              'yael/vector.c',
                              'yael/vlad.c',
-                             'yael/yael_wrap.c',
+                             'yael/yael.i',
                             ])
 
 
