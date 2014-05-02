@@ -60,7 +60,7 @@ machinedeps.o:  EXTRACFLAGS=$(OPENMPFLAG)
 # Python wrapper 
 
 
-yael_wrap.c : yael.swg common.swg nn.h kmeans.h gmm.h eigs.h hkm.h \
+yael_wrap.c : yael.i common.swg nn.h kmeans.h gmm.h eigs.h hkm.h \
 	sorting.h matrix.h vector.h machinedeps.h vlad.h kmlsh.h
 	$(SWIG) -I.. $(NUMPYSWIGFLAGS) $< 
 
